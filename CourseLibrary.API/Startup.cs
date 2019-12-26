@@ -30,11 +30,7 @@ namespace CourseLibrary.API
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
-            services.AddDbContext<CourseLibraryContext>(options =>
-            {
-                options.UseSqlServer(
-                    "Data Source=JCAMBI-L7490\\MSSQLSERVER01;Initial Catalog=ProductsDB;Integrated Security=True;");
-            }); 
+            services.AddDbContext<CourseLibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CourseLibraryDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
